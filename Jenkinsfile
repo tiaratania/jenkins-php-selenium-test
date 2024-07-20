@@ -14,7 +14,7 @@ pipeline {
                 stage('Headless Browser Test') {
                     agent {
                         docker {
-                            image 'maven'
+                            image 'maven:3-alpine'
                             args '--platform linux/amd64 -u root'
                         }
                     }
