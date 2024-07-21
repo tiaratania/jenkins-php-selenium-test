@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AppTest {
 	WebDriver driver;
 	WebDriverWait wait;
-	String url = "http://192.168.25.39";
+	String url = "http://my-apache-php-app:80"; // to change ltr
 	String validEmail = "user@example.com";
 	String validPassword = "password1234";
 	String invalidEmail = "none@example.com";

@@ -1,19 +1,21 @@
 services:
-  # Jenkins service configuration
   jenkins:
     build:
-      context: . # Path to the Jenkins Dockerfile directory
-      dockerfile: Dockerfile # Name of the Dockerfile for Jenkins
+      dockerfile: Dockerfile
+    image: custom-jenkins:latest
     ports:
-      - "8080:8080" # Map host port 8080 to container port 8080 for Jenkins web interface
-      - "50000:50000" # Map host port 50000 to container port 50000 for Jenkins agent communication
+      - "8080:8080"
+      - "50000:50000"
     volumes:
-      - jenkins_home:/var/jenkins_home # Persist Jenkins data in a Docker volume
-      - /var/run/docker.sock:/var/run/docker.sock # Allow Jenkins to communicate with the Docker daemon
-    # environment:
-    #   - JAVA_OPTS=-Djenkins.install.runSetupWizard=false # Disable Jenkins setup wizard
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - jenkins-net
 
 volumes:
   jenkins_home:
 
 
+networks:
+  jenkins-net:
+    driver: bridge
