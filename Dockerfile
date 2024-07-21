@@ -30,8 +30,6 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 # Add Jenkins user to Docker group (without creating it)
 RUN usermod -aG docker jenkins
 
-# Copy entrypoint script
-COPY jenkins_entrypoint.sh /usr/local/bin/jenkins_entrypoint.sh
-RUN chmod +x /usr/local/bin/jenkins_entrypoint.sh  
+
 
 USER jenkins
